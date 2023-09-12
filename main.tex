@@ -207,18 +207,18 @@ We evolve the models until a steady state is reached for the disc structure and 
 We modelled $4$ different stellar masses, ranging from \SI{0.1}{\solarmass} to \SI{1}{\solarmass} which, together with the \SI{0.7}{\solarmass} studied in \citetalias{2019MNRAS.487..691P}, allow us to study in detail the stellar mass dependence on the mass-loss rates due to photoevaporative winds in T Tauri stars. The initial parameters adopted in the different runs are summarised in Table~\ref{tab:stars}.
 
 \begin{table*}
-\caption{Star and disc properties}
+\caption{Stellar properties}
 \label{tab:stars}
 \centering
-\begin{tabular}{c c c c c c c c c c c}
+\begin{tabular}{c c c c c c c c}
 \hline
-Name & $\mathrm{M}_\star$ [\si{\solarmass}] & $\mathrm{R}_\star$ [\si{\solarradius}] & ST & $\mathrm{L}_\star$ [\si{\solarluminosity}] & $\mathrm{L}_X$ [\SI{e29}{erg.s^{-1}}] & $\mathrm{T}_\star$ [\si{\kelvin}] & M$_\mathrm{d}$ [\si{\solarmass}] & R$_\mathrm{in}$ [\si{\astronomicalunit}] & Spectrum & Gap radii [au]\\
+Name & $\mathrm{M}_\star$ [\si{\solarmass}] & $\mathrm{R}_\star$ [\si{\solarradius}] & ST & $\mathrm{L}_\star$ [\si{\solarluminosity}] & $\mathrm{L}_X$ [\SI{e29}{erg.s^{-1}}] & $\mathrm{T}_\star$ [\si{\kelvin}] & Spectrum\\
 \hline
 \hline
-   \texttt{1Msun} & $1.0$ & $2.615$ & K6 & $2.335$ & $20.4$ & $4278$ & $0.0444$ & $0.445$ & $\texttt{Spec30}$ & [10, 20, 30]\\
-   \texttt{0.5Msun} & $0.5$ & $2.125$ & M1 & $0.9288$ & $7.02$ & $3771$ & $0.0363$ & $0.2225$ & $\texttt{Spec30}$ & [10, 20, 30]\\
-   \texttt{0.3Msun} & $0.3$ & $2.310$ & M5 & $0.6887$ & $3.20$ & $3360$ & $0.0292$ & $0.1335$ & $\texttt{Spec29}$ & [10, 20, 30]\\
-   \texttt{0.1Msun} & $0.1$ & $1.055$ & M6 & $0.0856$ & $0.59$ & $2928$ & $0.0264$ & $0.0445$ & $\texttt{Spec29}$ & [10, 20, 30]\\
+   \texttt{1Msun} & $1.0$ & $2.615$ & K6 & $2.335$ & $20.4$ & $4278$ & $\texttt{Spec30}$ \\
+   \texttt{0.5Msun} & $0.5$ & $2.125$ & M1 & $0.9288$ & $7.02$ & $3771$ & $\texttt{Spec30}$ \\
+   \texttt{0.3Msun} & $0.3$ & $2.310$ & M5 & $0.6887$ & $3.20$ & $3360$ & $\texttt{Spec29}$ \\
+   \texttt{0.1Msun} & $0.1$ & $1.055$ & M6 & $0.0856$ & $0.59$ & $2928$ & $\texttt{Spec29}$ \\
 \hline
 \end{tabular}
 \end{table*}
@@ -226,12 +226,12 @@ Name & $\mathrm{M}_\star$ [\si{\solarmass}] & $\mathrm{R}_\star$ [\si{\solarradi
 \subsection{Hydrodynamical model}\label{sec:hydro-model}
 
 We adopted a spherical coordinate system centred on the star.
-The grid is logarithmically spaced in the radial direction with \SI{500}{cells}, in order to have better resolution in the inner region of the disc (R$_\mathrm{in}=$ \SI{0.5}{R_g}), where photoevaporation is mostly effective.
+The grid is logarithmically spaced in the radial direction with \SI{500}{cells}, in order to have better resolution in the inner region of the disc, where photoevaporation is mostly effective.
 At the same time, it allows us to model the disc out to large radii (R$_\mathrm{out}$ = \SI{600}{\astronomicalunit}) without strongly increasing our computational costs and preventing boundary effects that can affect the stability of the wind flow.
 For a detailed discussion of the numerical artefacts induced by the grid outer boundary, the reader is referred to \citetalias{2019MNRAS.487..691P}.
 The grid is spaced linearly in the polar direction, with a refinement at the wind launching region (\SI{100}{cells} from $0.01$ to \SI{0.5}{rad}, \SI{200}{cells} from $0.5$ to \SI{1}{rad}, and $50$ cells from $1$ to $\pi / 2$ rad).
 
-We initially evolve the system for few orbits at \SI{10}{au} without stellar irradiation in order for it to readjust to the hydrostatic equilibrium. Then, we switch on the stellar heating (applied through a parameterisation as explained above and in \citetalias{2019MNRAS.487..691P}) and continue to evolve the system for a few hundred orbits until the cumulative mass-loss rate and gas streamline in the wind have reached a steady-state after few hundred orbital periods (at \SI{10}{au}).
+We evolve the system between 500 and 1000 orbits at \SI{10}{au} with stellar irradiation (applied through a parameterisation as explained above and in \citetalias{2019MNRAS.487..691P}) until the cumulative mass-loss rate and gas streamline in the wind have reached a steady-state after few hundred orbital periods (at \SI{10}{au}). We also double the resolution for few of the test runs to check that we are capturing the proper physical scales.
 
 %-------------------------------------------------------------------
 \section{Results}\label{sec:results}
@@ -246,6 +246,13 @@ We initially evolve the system for few orbits at \SI{10}{au} without stellar irr
 \end{figure*}
 
 \subsection{Mass-loss rates}\label{sec:mdot}
+
+\begin{figure}
+   \centering
+   \includegraphics[width=0.5\textwidth]{Mdot.png}
+   \caption{Cumulative mass-loss rate as a function of gap cavity for different stellar masses.
+   \label{fig:mdot}}
+\end{figure}
 
 \begin{figure}
    \centering
